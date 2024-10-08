@@ -1,1 +1,15 @@
-<p>main works!</p>
+<div class="todo-container">
+    <h2>My Todo List</h2>
+    <div *ngIf="todoItems.length === 0" class="no-todos">
+      <p>No todo items available.</p>
+    </div>
+    <ul class="todo-list">
+      <li *ngFor="let item of todoItems" [ngClass]="{ completed: item.isCompleted }">
+        <h3>{{ item.title }}</h3>
+        <p><strong>Detail:</strong> {{ item.detail }}</p>
+        <p><strong>Priority:</strong> {{ item.priority }}</p>
+        <p><strong>Created on:</strong> {{ item.createDate | date:'short' }}</p>
+      </li>
+    </ul>
+  </div>
+  
