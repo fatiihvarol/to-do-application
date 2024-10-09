@@ -4,12 +4,13 @@
       <p>No todo items available.</p>
     </div>
     <ul class="todo-list">
-      <li *ngFor="let item of todoItems" [ngClass]="{ completed: item.isCompleted }">
+      <li *ngFor="let item of todoItems" [ngClass]="{ completed: item.isCompleted }" (click)="goToDetail(item.id)">
         <h3>{{ item.title }}</h3>
         <p><strong>Detail:</strong> {{ item.detail }}</p>
         <p><strong>Priority:</strong> {{ item.priority }}</p>
         <p><strong>Created on:</strong> {{ item.createDate | date:'short' }}</p>
       </li>
     </ul>
+    
   </div>
   

@@ -1,39 +1,41 @@
+import { Router } from '@angular/router'; // Import Router
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../services/todo/todo.service'; // Adjust the import path as necessary
-import { TodoItem } from '../model/todo-item.mode'; // Adjust the import path as necessary
+import { TodoService } from '../services/todo/todo.service';
+import { TodoItem } from '../model/todo-item.mode';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main',
   standalone: true,
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'], 
-  imports: [CommonModule], // Add CommonModule here
-
+  styleUrls: ['./main.component.css'],
+  imports: [CommonModule],
 })
 export class MainComponent implements OnInit {
+  todoItems: TodoItem[] = [];
 
-  todoItems: TodoItem[] = []; // Use the TodoItem interface
-
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private router: Router) {} // Inject Router
 
   ngOnInit(): void {
-    this.getMyTodoItems(); // Call the function to get todo items
+    this.getMyTodoItems();
   }
 
   private getMyTodoItems(): void {
     this.todoService.getMyTodoItems().subscribe({
       next: (response) => {
         if (response.isSuccess) {
-          this.todoItems = response.result; // Use the result array from the response
-          console.log('Todo items:', this.todoItems);
+          this.todoItems = response.result;
         } else {
           console.error('Failed to fetch todo items:', response.errorMessage);
         }
       },
       error: (error) => {
         console.error('Error fetching todo items:', error);
-      }
+      },
     });
+  }
+
+  goToDetail(id: number): void {
+    this.router.navigate([`/todo-detail/${id}`]); // Navigate to the detail page
   }
 }
