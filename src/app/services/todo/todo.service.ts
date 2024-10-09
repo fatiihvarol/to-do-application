@@ -8,27 +8,54 @@ import { catchError } from 'rxjs/operators';
 })
 export class TodoService {
 
-  private apiUrl = 'https://localhost:7149/api/TodoItems/GetMyTodoItems';
+  private apiUrl = 'https://localhost:7149/api/TodoItems';
 
   constructor(private http: HttpClient) {}
 
   getMyTodoItems(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = { Authorization: `Bearer ${token}` };
-  
-    return this.http.get(this.apiUrl, { headers }).pipe(
+    const headers = this.getAuthHeaders();
+    return this.http.get(`${this.apiUrl}/GetMyTodoItems`, { headers }).pipe(
       catchError(this.handleError)
     );
   }
-  
+
+  getTodoItemById(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.get(`${this.apiUrl}/GetTodoItemById/${id}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateTodoItem(id:any,todoItem: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.put(`${this.apiUrl}/Update/${id}`, todoItem, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteTodoItem(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.delete(`${this.apiUrl}/DeleteTodoItem/${id}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateStatusTodoItem(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.put(`${this.apiUrl}/UpdateStatus/${id}`, null, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private getAuthHeaders() {
+    const token = localStorage.getItem('token');
+    return { Authorization: `Bearer ${token}` };
+  }
 
   private handleError(error: HttpErrorResponse) {
-    // Customize error handling based on the response
     if (error.error instanceof ErrorEvent) {
-      // Client-side error
       console.error('An error occurred:', error.error.message);
     } else {
-      // Server-side error
       console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
     }
     return throwError('Something bad happened; please try again later.');
