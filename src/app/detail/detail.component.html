@@ -1,1 +1,33 @@
-<p>detail works!</p>
+<div class="todo-detail-container">
+  <h2>Todo Item Detail</h2>
+  
+  <label>
+    <strong>Completed:</strong>
+    <input (click)="handleComplate()" type="checkbox" [(ngModel)]="todoItem.isCompleted" />
+  </label>
+  
+  <div *ngIf="todoItem">
+    <p>
+      <strong>Title:</strong>
+      <input type="text" [(ngModel)]="todoItem.title" />
+    </p>
+    <p>
+      <strong>Detail:</strong>
+      <textarea [(ngModel)]="todoItem.detail"></textarea>
+    </p>
+    <p>
+      <strong>Priority:</strong>
+      <select [(ngModel)]="todoItem.priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </p>
+    <button class="button-update" (click)="updateTodoItem()">Update</button>
+    <button class="button-delete"  (click)="deleteTodoItem()">Delete</button>
+  </div>
+
+  <div *ngIf="!todoItem">
+    <p>Loading...</p>
+  </div>
+</div>

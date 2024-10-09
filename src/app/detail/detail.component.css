@@ -1,0 +1,75 @@
+.todo-detail-container {
+  max-width: 600px; /* Maksimum genişlik */
+  margin: 20px auto; /* Ortada hizalama */
+  padding: 20px; /* İç boşluk */
+  border: 1px solid #ccc; /* Çerçeve */
+  border-radius: 8px; /* Yuvarlatılmış köşeler */
+  background-color: #f9f9f9; /* Arka plan rengi */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Gölge */
+}
+
+h2 {
+  text-align: center; /* Başlığı ortala */
+  color: #333; /* Başlık rengi */
+}
+
+label {
+  display: block; /* Label'ı blok seviyesine getir */
+  margin: 10px 0; /* Üst ve alt boşluk */
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%; /* Genişliği %100 yap */
+  padding: 10px; /* İç boşluk */
+  margin: 8px 0; /* Üst ve alt boşluk */
+  border: 1px solid #ccc; /* Çerçeve */
+  border-radius: 4px; /* Yuvarlatılmış köşeler */
+  box-sizing: border-box; /* Padding ve border dahil genişlik hesaplama */
+}
+
+textarea {
+  resize: vertical; /* Yalnızca dikey boyutlandırmaya izin ver */
+  height: 100px; /* Yükseklik ayarı */
+}
+
+/* Buton stilleri */
+.button-container {
+  display: flex; /* Butonları yan yana yerleştir */
+  justify-content: space-between; /* Butonlar arasında boşluk bırak */
+  margin-top: 15px; /* Üst boşluk */
+}
+
+.button-update,
+.button-delete {
+  flex: 1; /* Butonların eşit genişlikte olmasını sağlar */
+  padding: 10px 15px; /* İç boşluk */
+  border: none; /* Kenarlık yok */
+  border-radius: 4px; /* Yuvarlatılmış köşeler */
+  cursor: pointer; /* Fare imlecini göster */
+  transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+.button-update {
+  background-color: #28a745; /* Güncelleme buton rengi */
+  color: white; /* Yazı rengi */
+  margin-right: 10px; /* Sağ boşluk */
+}
+
+.button-delete {
+  background-color: red; /* Silme buton rengi */
+  color: white; /* Yazı rengi */
+}
+
+.button-update:hover {
+  background-color: #218838; /* Hover durumu için koyu yeşil */
+}
+
+.button-delete:hover {
+  background-color: #c82333; /* Silme butonu hover durumu */
+}
+
+p {
+  margin: 10px 0; /* Üst ve alt boşluk */
+}
