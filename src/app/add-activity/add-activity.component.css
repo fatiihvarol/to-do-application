@@ -1,0 +1,56 @@
+.add-activity-container {
+    max-width: 600px; /* Maksimum genişlik */
+    margin: 20px auto; /* Ortada hizalama */
+    padding: 20px; /* İç boşluk */
+    border: 1px solid #ccc; /* Çerçeve */
+    border-radius: 8px; /* Yuvarlatılmış köşeler */
+    background-color: #f9f9f9; /* Arka plan rengi */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Gölge */
+  }
+  
+  h2 {
+    text-align: center; /* Başlığı ortala */
+    color: #333; /* Başlık rengi */
+  }
+  
+  label {
+    display: block; /* Label'ı blok seviyesine getir */
+    margin: 10px 0; /* Üst ve alt boşluk */
+  }
+  
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%; /* Genişliği %100 yap */
+    padding: 10px; /* İç boşluk */
+    margin: 8px 0; /* Üst ve alt boşluk */
+    border: 1px solid #ccc; /* Çerçeve */
+    border-radius: 4px; /* Yuvarlatılmış köşeler */
+    box-sizing: border-box; /* Padding ve border dahil genişlik hesaplama */
+  }
+  
+  textarea {
+    resize: vertical; /* Yalnızca dikey boyutlandırmaya izin ver */
+    height: 100px; /* Yükseklik ayarı */
+  }
+  
+  button {
+    background-color: #28a745; /* Buton rengi */
+    color: white; /* Yazı rengi */
+    padding: 10px 15px; /* İç boşluk */
+    margin-top: 10px; /* Üst boşluk */
+    border: none; /* Kenarlık yok */
+    border-radius: 4px; /* Yuvarlatılmış köşeler */
+    cursor: pointer; /* Fare imlecini göster */
+    transition: background-color 0.3s; /* Geçiş efekti */
+  }
+  
+  button:hover {
+    background-color: #218838; /* Hover durumu için koyu yeşil */
+  }
+  
+  .success-message {
+    margin-top: 20px; /* Üst boşluk */
+    color: green; /* Başarı mesajı rengi */
+  }
+  

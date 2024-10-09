@@ -34,7 +34,11 @@ export class MainComponent implements OnInit {
       },
     });
   }
+  addTodo()
+  {
+    this.router.navigate([`/add-activity`]); 
 
+  }
   goToDetail(id: number): void {
     this.router.navigate([`/todo-detail/${id}`]); // Navigate to the detail page
   }

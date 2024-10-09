@@ -6,7 +6,20 @@
     border-radius: 8px;
     background-color: #f9f9f9;
   }
-  
+  .button {
+    background-image: url('../assests/plus.png'); /* Resim yolu */
+    background-size: contain; /* Resmin boyutunu ayarlamak için */
+    background-repeat: no-repeat; /* Resmin tekrarlanmaması için */
+    background-position: center; /* Resmin buton ortasında yer alması için */
+    color: white; /* Yazı rengi */
+    padding: 30px 50px; /* İç boşluk */
+    border: none; /* Kenarlık yok */
+    border-radius: 4px; /* Yuvarlatılmış köşeler */
+    cursor: pointer; /* Fare imlecini göster */
+    transition: background-color 0.3s; /* Geçiş efekti */
+    background-color: #f9f9f9;
+}
+
   h2 {
     text-align: center;
     color: #333;

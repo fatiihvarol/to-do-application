@@ -1,1 +1,30 @@
-<p>add-activity works!</p>
+<div class="add-activity-container">
+    <h2>Add New Todo Item</h2>
+    <form (ngSubmit)="addTodoItem()" #todoForm="ngForm">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" required [(ngModel)]="newTodo.title" name="title" />
+      </div>
+      <div>
+        <label for="detail">Detail:</label>
+        <textarea id="detail" required [(ngModel)]="newTodo.detail" name="detail"></textarea>
+      </div>
+      <div>
+        <label for="priority">Priority:</label>
+        <select id="priority" required [(ngModel)]="newTodo.priority" name="priority">
+          <option [ngValue]="Priority.Low">Low</option>
+          <option [ngValue]="Priority.Medium">Medium</option>
+          <option [ngValue]="Priority.High">High</option>
+        </select>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" [(ngModel)]="newTodo.isCompleted" name="isCompleted" />
+          Completed
+        </label>
+      </div>
+      <button type="submit" [disabled]="!todoForm.form.valid">Add Todo Item</button>
+    </form>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+  </div>
+  

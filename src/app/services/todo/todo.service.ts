@@ -11,7 +11,11 @@ export class TodoService {
   private apiUrl = 'https://localhost:7149/api/TodoItems';
 
   constructor(private http: HttpClient) {}
+  createTodoItem(todoItem: any): Observable<any> {
+    const headers = this.getAuthHeaders();
 
+    return this.http.post(`${this.apiUrl}/Create`, todoItem,{headers});
+  }
   getMyTodoItems(): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.get(`${this.apiUrl}/GetMyTodoItems`, { headers }).pipe(
