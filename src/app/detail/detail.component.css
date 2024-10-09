@@ -52,7 +52,7 @@ textarea {
 }
 
 .button-update {
-  background-color: #28a745; /* Güncelleme buton rengi */
+  background-color: rgb(254, 176, 31); /* Güncelleme buton rengi */
   color: white; /* Yazı rengi */
   margin-right: 10px; /* Sağ boşluk */
 }
@@ -63,7 +63,7 @@ textarea {
 }
 
 .button-update:hover {
-  background-color: #218838; /* Hover durumu için koyu yeşil */
+  background-color: rgb(255, 166, 0); /* Hover durumu için koyu yeşil */
 }
 
 .button-delete:hover {

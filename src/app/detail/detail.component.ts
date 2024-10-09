@@ -17,18 +17,23 @@ import { TodoItemUpdate } from '../model/todo-item-update-model';
 })
 export class DetailComponent implements OnInit {
   todoItem: any;
+  originalTodoItem: any; // To store the original values
   errorMessage: string | null = null;
 
   constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router) { }
   updateTodoItem(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
+    if (!this.todoItem.title.trim()) {
+      alert("title can not be empty")
+      return; 
+    }
+    
     const updatedTodoItem:TodoItemUpdate = {
       title: this.todoItem.title,
       detail: this.todoItem.detail,
       isCompleted: this.todoItem.isCompleted,
       priority: Priority[this.todoItem.priority] 
-    };
+    };  
 
     this.todoService.updateTodoItem(id, updatedTodoItem).subscribe({
       next: (response) => {
@@ -77,6 +82,9 @@ export class DetailComponent implements OnInit {
         next: (response) => {
           if (response.isSuccess) {
             this.todoItem = response.result;
+            alert("Status Changed Succesfully")
+            this.router.navigate([`/main`]);
+
 
           } else {
             this.errorMessage = 'Failed update the todo item.';
