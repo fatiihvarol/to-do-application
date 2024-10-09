@@ -1,7 +1,7 @@
 import { Router } from '@angular/router'; // Import Router
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../services/todo/todo.service';
-import { TodoItem } from '../model/todo-item.mode';
+import { TodoItem } from '../model/todo-item.model';
 import { CommonModule } from '@angular/common';
 
 @Component({

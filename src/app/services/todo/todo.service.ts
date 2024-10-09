@@ -35,7 +35,7 @@ export class TodoService {
 
   deleteTodoItem(id: number): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.delete(`${this.apiUrl}/DeleteTodoItem/${id}`, { headers }).pipe(
+    return this.http.delete(`${this.apiUrl}/Delete/${id}`, { headers }).pipe(
       catchError(this.handleError)
     );
   }
