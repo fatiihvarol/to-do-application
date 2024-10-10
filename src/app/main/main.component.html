@@ -1,19 +1,46 @@
 <div class="todo-container">
-    <h2>My Todo List</h2>
-    <div *ngIf="todoItems.length === 0" class="no-todos">
-      <p>No todo items available.</p>
-    </div>
-   
-    <button class="button" (click) = "addTodo()"></button>
-    <ul class="todo-list">
-      <li *ngFor="let item of todoItems" [ngClass]="{ completed: item.isCompleted }" (click)="goToDetail(item.id)">
-        <h3>{{ item.title }}</h3>
-        <p><strong>Detail:</strong> {{ item.detail }}</p>
-        <p><strong>Priority:</strong> {{ item.priority }}</p>
-        <p><strong>Created on:</strong> {{ item.createDate | date:'dd/MM/yyyy'}}<dd>
-       </p>
-      </li>
-    </ul>
-    
+  <h2>My Todo List</h2>
+  <br>
+
+  <button class="button" (click)="addTodo()">ADD TODO</button>
+
+  <!-- Incompleted Todo Items -->
+  <h2>Incompleted Todos</h2>
+  <div *ngIf="incompletedTodos.length === 0" class="no-todos">
+    <p>No incompleted todo items available.</p>
   </div>
-  
+  <ul class="todo-list">
+    <li *ngFor="let item of incompletedTodos">
+      <h3 (click)="goToDetail(item.id)">{{ item.title }}</h3>
+
+      <p>
+        <input
+          type="checkbox"
+          [checked]="item.isCompleted"
+          (change)="toggleCompletion(item.id)"
+        />
+      </p>
+
+      <p><strong>Detail:</strong> {{ item.detail }}</p>
+      <p><strong>Priority:</strong> {{ item.priority }}</p>
+      <p><strong>Created on:</strong> {{ item.createDate | date: 'dd/MM/yyyy' }}</p>
+      <button (click)="deleteTodoItem(item.id)">Delete</button>
+    </li>
+  </ul>
+
+  <!-- Completed Todo Items -->
+  <h2>Completed Todos</h2>
+  <div *ngIf="completedTodos.length === 0" class="no-todos">
+    <p>No completed todo items available.</p>
+  </div>
+  <ul class="todo-list">
+    <li *ngFor="let item of completedTodos" >
+      <h3 (click)="goToDetail(item.id)">{{ item.title }}</h3>
+      <p><input type="checkbox" (change)="toggleCompletion(item.id)" [checked]="item.isCompleted" /></p>
+      <p><strong>Detail:</strong> {{ item.detail }}</p>
+      <p><strong>Priority:</strong> {{ item.priority }}</p>
+      <p><strong>Created on:</strong> {{ item.createDate | date: 'dd/MM/yyyy' }}</p>
+      <button (click)="deleteTodoItem(item.id)">Delete</button>
+    </li>
+  </ul>
+</div>

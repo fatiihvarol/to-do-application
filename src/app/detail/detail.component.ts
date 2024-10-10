@@ -51,30 +51,7 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  deleteTodoItem() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.todoService.deleteTodoItem(+id).subscribe({
-        next: (response) => {
-          if (response.isSuccess) {
-            alert("deleted succesfully")
-            this.router.navigate([`/main`]); // Navigate to the detail page
 
-          } else {
-            this.errorMessage = 'Failed delete the todo item.';
-          }
-        },
-        error: () => {
-          this.errorMessage = 'Error occurred while delete the todo item.';
-        },
-        complete: () => {
-          this.ngOnInit();
-        }
-      });
-    } else {
-      this.errorMessage = 'Invalid todo item ID.';
-    }
-  }
   handleComplate(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
